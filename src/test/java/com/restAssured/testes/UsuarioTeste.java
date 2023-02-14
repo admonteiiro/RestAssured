@@ -1,5 +1,6 @@
 package com.restAssured.testes;
 
+import com.restAssured.dominio.Usuario;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
@@ -12,7 +13,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 public class UsuarioTeste {
 
     @BeforeClass
-    public static void setup(){
+    public static void setUp(){
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         baseURI = "https://reqres.in";
         basePath = "/api";
@@ -32,9 +33,10 @@ public class UsuarioTeste {
 
     @Test
     public void testeCriarUsuarioComSucesso(){
+        Usuario usuario = new Usuario("ana", "eng");
         given().
               contentType(ContentType.JSON).
-              body("{\"name\": \"ana\", \"job\": \"eng teste\"}").
+              body(usuario).
         when().
               post("/users").
         then().
