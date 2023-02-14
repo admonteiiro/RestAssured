@@ -1,4 +1,4 @@
-package com.restAssured;
+package com.restAssured.testes;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -9,17 +9,21 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class AppTest {
+public class UsuarioTeste {
 
     @BeforeClass
     public static void setup(){
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        baseURI = "https://reqres.in";
+        basePath = "/api";
     }
 
     @Test
     public void testeListaDadosUsuarios() {
+        given().
+             params("page", "2").
         when().
-             get("https://reqres.in/api/users?page=2").
+             get("/users").
         then().
              statusCode(HttpStatus.SC_OK).
              body("page",is(2)).
@@ -32,7 +36,7 @@ public class AppTest {
               contentType(ContentType.JSON).
               body("{\"name\": \"ana\", \"job\": \"eng teste\"}").
         when().
-              post("https://reqres.in/api/users").
+              post("/users").
         then().
               statusCode(HttpStatus.SC_CREATED).
               body("name", is("ana"));
