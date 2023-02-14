@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: org.example.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.061 s <<< FAILURE! - in org.example.AppTest
+testStatusCode(org.example.AppTest)  Time elapsed: 1.044 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/hamcrest/Matchers
+	at org.example.AppTest.testStatusCode(AppTest.java:12)
+Caused by: java.lang.ClassNotFoundException: org.hamcrest.Matchers
+	at org.example.AppTest.testStatusCode(AppTest.java:12)
+
