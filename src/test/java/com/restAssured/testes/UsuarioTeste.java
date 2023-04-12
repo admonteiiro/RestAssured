@@ -33,7 +33,7 @@ public class UsuarioTeste {
 
     @Test
     public void testeCriarUsuarioComSucesso(){
-        Usuario usuario = new Usuario("ana", "eng");
+        Usuario usuario = new Usuario("ana", "eng", "email@gmail.com");
         given().
               contentType(ContentType.JSON).
               body(usuario).
