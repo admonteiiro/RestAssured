@@ -1,23 +1,14 @@
 package com.restAssured.testes;
 
 import com.restAssured.dominio.Usuario;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class UsuarioTeste {
-
-    @BeforeClass
-    public static void setUp(){
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        baseURI = "https://reqres.in";
-        basePath = "/api";
-    }
+public class UsuarioTeste extends BaseTeste {
 
     @Test
     public void testeListaDadosUsuarios() {
